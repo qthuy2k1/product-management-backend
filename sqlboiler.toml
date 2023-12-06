@@ -1,0 +1,35 @@
+output   = "internal/models"
+wipe     = true
+no-tests = true
+add-enum-types = true
+
+[psql]
+  host = "localhost"
+  dbname = "product_management"
+  port   = 5432
+  user   = "postgres"
+  pass   = "root"
+  blacklist = ["migrations", "other"]
+  sslmode = "disable"
+  schema = "public"
+
+[[types]]
+  [types.match]
+    type = "types.Decimal"
+
+  [types.replace]
+    type = "decimal.Decimal"
+
+  [types.imports]
+    third_party = ['"github.com/shopspring/decimal"']
+
+[[types]]
+  [types.match]
+    type = "types.NullDecimal"
+    nullable = true
+
+  [types.replace]
+    type = "decimal.NullDecimal"
+
+  [types.imports]
+    third_party = ['"github.com/shopspring/decimal"']

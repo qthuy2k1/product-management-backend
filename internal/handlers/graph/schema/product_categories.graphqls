@@ -1,0 +1,7 @@
+type ProductCategory {
+    id: Int!
+    name: String!
+    description: String!
+    createdAt: timestamptz!
+    updatedAt: timestamptz!
+}

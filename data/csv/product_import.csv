@@ -1,0 +1,10 @@
+Name,Description,Price,Quantity,AuthorID,Category
+Samsung S23,"A Samsung device with Snapdragon 8 Gen 2 chipset, 8GB RAM, 128GB storage.",1100,10,123,Smartphone
+Samsung Galaxy Watch 5,"A Samsung smartwatch with a Super Amoled 1.2 inch screen, 40mm clock face.",250,20,2,Smartwatch
+Apple Watch Series 7,"An Apple smartwatch with a Oled 1.77 inch screen, 45mm clock face.",400,5,188,Smartwatch
+Sony WH-1000XM4 ,A Sony bluetooth headphone with bluetooth 5.0 and noise cancelling feature.,350,10,188,Headphone
+AirPods Pro MagSafe Charge Apple MLWK3,An Apple bluetooth earphone with bluetooth 5.0 and magsafe charge.,250,15,188,Earphone
+iPad 9 ,"An Apple tablet with Apple A13 Bionic chipset, 3GB RAM, 64GB storage.",400,13,188,Tablet
+Smart Tivi LG 4K 55 inch 55UQ7550PSF,A LG smart television with 4K 55 inch screen.,600,10,188,TV
+Sony HT-S40R 600W   ,A Sony speaker with Dolby Digital technology.,350,20,188,Speaker
+"Asus TUF GAMING VG249Q 24"" IPS 144Hz FreeSync",A Asus monitor with 24 inch IPS and 144HZ refresh rate.,250,25,188,Monitor

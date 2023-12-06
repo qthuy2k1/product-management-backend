@@ -1,0 +1,12 @@
+scalar timestamptz
+
+type User {
+    id: Int!
+    name: String!
+    email: String!
+    role: String!
+    createdAt: timestamptz!
+    updatedAt: timestamptz!
+    status: String!
+    orders: [Order!]!
+}

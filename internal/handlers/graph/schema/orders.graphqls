@@ -1,0 +1,56 @@
+type Order {
+  id: Int!
+  user: User!
+  status: Status!
+  createdAt: String
+  updatedAt: String
+  total: Float
+  items: [OrderItem!]!
+}
+
+input OrderRequest {
+  userID: Int!
+  status: Status!
+  items: [OrderItemRequest!]!
+}
+
+extend type Mutation {
+  createOrder(input: OrderRequest!): Boolean!
+  updateOrder(orderID: Int!, input: OrderRequest!): Boolean!
+}
+
+enum Status {
+  NEW
+  PENDING
+  PAID
+  CANCELLED
+}
+
+
+input Sorting {
+  columnName: String!
+  desc: Boolean!
+}
+
+input SortingInput {
+  column: [Sorting]
+}
+
+input PaginationInput {
+  limit: Int!
+  page: Int!
+}
+
+type OrderResponse {
+  order: [Order!]!
+  totalCount: Int!
+}
+
+input FilterDate {
+  startDate: String!
+  endDate: String!
+}
+
+extend type Query {
+  getOrders(filter: FilterDate,sorting: SortingInput, pagination: PaginationInput!): OrderResponse!
+}

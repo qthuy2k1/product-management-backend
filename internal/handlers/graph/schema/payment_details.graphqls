@@ -1,0 +1,8 @@
+type PaymentDetail {
+    id: Int!
+    paymentID: Int!
+    orderID: Int!
+    price: Float!
+    createdAt: timestamptz!
+    updatedAt: timestamptz!
+}

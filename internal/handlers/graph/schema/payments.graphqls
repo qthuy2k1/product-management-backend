@@ -1,0 +1,9 @@
+type Payment {
+    id: Int!
+    userID: Int!
+    paymentMethod: String!
+    cardNumber: Int!
+    expirationDate: timestamptz!
+    createdAt: timestamptz!
+    updatedAt: timestamptz!
+}

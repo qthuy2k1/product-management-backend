@@ -1,0 +1,15 @@
+type OrderItem {
+  id: Int!
+  order: Order!
+  product: Product!
+  price: Float!
+  quantity: Int!
+  createdAt: timestamptz!
+  updatedAt: timestamptz!
+}
+
+input OrderItemRequest {
+  id: Int
+  productID: Int!
+  quantity: Int!
+}

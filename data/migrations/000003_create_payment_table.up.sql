@@ -1,0 +1,30 @@
+CREATE TABLE IF NOT EXISTS "payments" (
+    id SERIAL PRIMARY KEY NOT NULL,
+    user_id INT NOT NULL,
+    payment_method VARCHAR(255) NOT NULL,
+    card_number NUMERIC(16,0) NOT NULL UNIQUE,
+    expiration_date DATE NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES "users"(id)
+);
+
+CREATE TABLE IF NOT EXISTS "payment_details" (
+    id SERIAL PRIMARY KEY NOT NULL,
+    payment_id INT NOT NULL,
+    order_id INT NOT NULL,
+    price NUMERIC(17,2) NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (payment_id) REFERENCES "payments"(id),
+    FOREIGN KEY (order_id) REFERENCES "orders"(id)
+);
+
+ALTER TABLE products 
+ALTER COLUMN price TYPE NUMERIC(17,2);
+
+ALTER TABLE order_items
+ALTER COLUMN price TYPE NUMERIC(17,2);
+
+ALTER TABLE orders
+ADD COLUMN total_price NUMERIC(17,2);

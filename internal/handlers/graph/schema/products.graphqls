@@ -1,0 +1,28 @@
+type Product {
+    id: Int!
+    name: String!
+    description: String!
+    price: Float!
+    quantity: Int!
+    category: ProductCategory!
+    author: User!
+    createdAt: timestamptz!
+    updatedAt: timestamptz!
+}
+
+input ProductRequest {
+    name: String!
+    description: String!
+    price: Float!
+    quantity: Int!
+    categoryName: String!
+    authorID: Int!
+}
+
+type Mutation {
+    createProduct(input: ProductRequest!): Boolean!
+}
+
+type Query {
+    getProducts(queryName: String!, date: String!): [Product!]!
+}

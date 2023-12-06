@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    env_file:
+      - .env
+    networks:
+      host:
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/app
+    command: go run cmd/main.go cmd/router.go
+    depends_on:
+      - postgres
+      - cache
+
+  postgres:
+    image: postgres:alpine
+    networks:
+      host:
+        aliases:
+          - database
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+      - ./init-database.sh:/docker-entrypoint-initdb.d/init-database.sh
+
+  db_migrations:
+    image: migrate/migrate
+    networks:
+      - host
+    volumes:
+      - ./data/migrations:/migrations
+    depends_on:
+      - postgres
+    command: -path=/migrations -database $DB_URL up
+
+  cache:
+    image: redis:6.0.20-alpine
+    restart: always
+    networks:
+      - host
+    ports:
+      - '6379:6379'
+    command: redis-server --save 60 1 --loglevel warning
+    volumes: 
+      - cache:/data
+
+volumes:
+  postgres-db:
+  cache:
+
+networks:
+  host:
